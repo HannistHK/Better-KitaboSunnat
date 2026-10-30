@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ur" dir="rtl" data-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>کتاب و سنت لائبریری | Better KitaboSunnat</title>
+  <title>Free Online Library</title>
 
   <!-- Theme init script to avoid flash of wrong theme -->
   <script>
@@ -15,7 +15,7 @@
     })();
   </script>
 
-  <meta name="description" content="کتاب و سنت لائبریری کا تیز ترین اور خوبصورت اوپن سورس سرچ انجن۔" />
+  <meta name="description" content="Free Online Library — Fast, clean, and instant search across thousands of Islamic books." />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='28' fill='%23141624'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='800' font-size='55' fill='%236366f1'>📖</text></svg>" />
 
   <!-- Google Fonts: Plus Jakarta Sans, DM Mono & Noto Nastaliq Urdu -->
@@ -27,72 +27,53 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <style>
+    /* Lightweight Design System - Zero GPU Bottlenecks */
     :root {
-      --neu-bg:           #e0e5ec;
-      --neu-shadow-light: #ffffff;
-      --neu-shadow-dark:  #a3b1c6;
-      --neu-shadow-out:   8px 8px 18px var(--neu-shadow-dark), -8px -8px 18px var(--neu-shadow-light);
-      --neu-shadow-in:    inset 4px 4px 10px var(--neu-shadow-dark), inset -4px -4px 10px var(--neu-shadow-light);
-      --neu-shadow-sm:    4px 4px 10px var(--neu-shadow-dark), -4px -4px 10px var(--neu-shadow-light);
+      --bg-main:          #f1f4f9;
+      --bg-card:          #ffffff;
+      --bg-card-hover:    #fafbfd;
+      --bg-inset:         #e4e8f0;
+      --border-subtle:    #e2e8f0;
+      --border-focus:     #6366f1;
 
-      --glass-bg:         rgba(255, 255, 255, 0.65);
-      --glass-bg-hov:     rgba(255, 255, 255, 0.85);
-      --glass-border:     rgba(255, 255, 255, 0.65);
-      --glass-shadow:     0 8px 32px rgba(100, 120, 160, 0.12), 0 2px 8px rgba(100, 120, 160, 0.08);
-      --glass-shadow-hov: 0 16px 40px rgba(100, 120, 160, 0.22), 0 4px 12px rgba(100, 120, 160, 0.12);
-
-      --sheen-edge:       rgba(255, 255, 255, 0.90);
-      --sheen-card:       rgba(255, 255, 255, 0.28);
-      --sheen-sweep-a:    rgba(255, 255, 255, 0.18);
-      --sheen-sweep-b:    rgba(255, 255, 255, 0.28);
+      --shadow-sm:        0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.04);
+      --shadow-md:        0 4px 14px rgba(0, 0, 0, 0.06);
+      --shadow-lg:        0 10px 25px rgba(0, 0, 0, 0.08);
 
       --accent-indigo:    #6366f1;
       --accent-cyan:      #06b6d4;
       --accent-pink:      #ec4899;
-      --accent-purple:    #a855f7;
 
-      --name-grad-start:  #2d3250;
-      --text-primary:     #2d3250;
-      --text-secondary:   #5a6680;
-      --text-muted:       #8a97b0;
+      --text-primary:     #1e2337;
+      --text-secondary:   #4b5568;
+      --text-muted:       #828fa3;
 
-      --r-xs:   8px;
-      --r-sm:   14px;
-      --r-md:   20px;
-      --r-lg:   28px;
+      --r-xs:   6px;
+      --r-sm:   10px;
+      --r-md:   16px;
+      --r-lg:   22px;
       --r-full: 9999px;
 
       --font:      'Plus Jakarta Sans', system-ui, sans-serif;
       --font-mono: 'DM Mono', monospace;
       --font-urdu: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', serif;
-
-      --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
-      --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     [data-theme="dark"] {
-      --neu-bg:           #141624;
-      --neu-shadow-light: #1e2138;
-      --neu-shadow-dark:  #0b0d18;
-      --neu-shadow-out:   8px 8px 18px var(--neu-shadow-dark), -8px -8px 18px var(--neu-shadow-light);
-      --neu-shadow-in:    inset 4px 4px 10px var(--neu-shadow-dark), inset -4px -4px 10px var(--neu-shadow-light);
-      --neu-shadow-sm:    4px 4px 10px var(--neu-shadow-dark), -4px -4px 10px var(--neu-shadow-light);
+      --bg-main:          #0e111a;
+      --bg-card:          #161a26;
+      --bg-card-hover:    #1c2030;
+      --bg-inset:         #111420;
+      --border-subtle:    rgba(255, 255, 255, 0.08);
+      --border-focus:     #818cf8;
 
-      --glass-bg:         rgba(30, 33, 56, 0.85);
-      --glass-bg-hov:     rgba(36, 40, 66, 0.95);
-      --glass-border:     rgba(255, 255, 255, 0.10);
-      --glass-shadow:     0 8px 32px rgba(0, 0, 0, 0.50), 0 2px 8px rgba(0, 0, 0, 0.30);
-      --glass-shadow-hov: 0 16px 40px rgba(0, 0, 0, 0.65), 0 4px 12px rgba(0, 0, 0, 0.40);
+      --shadow-sm:        0 1px 3px rgba(0, 0, 0, 0.4);
+      --shadow-md:        0 4px 16px rgba(0, 0, 0, 0.45);
+      --shadow-lg:        0 10px 30px rgba(0, 0, 0, 0.55);
 
-      --sheen-edge:       rgba(255, 255, 255, 0.05);
-      --sheen-card:       rgba(255, 255, 255, 0.03);
-      --sheen-sweep-a:    rgba(255, 255, 255, 0.03);
-      --sheen-sweep-b:    rgba(255, 255, 255, 0.06);
-
-      --name-grad-start:  #ffffff;
       --text-primary:     #ffffff;
-      --text-secondary:   #c2c9e0;
-      --text-muted:       #94a3b8;
+      --text-secondary:   #cbd5e1;
+      --text-muted:       #8a99ad;
     }
 
     *, *::before, *::after {
@@ -102,7 +83,7 @@
     }
 
     html {
-      background-color: var(--neu-bg);
+      background-color: var(--bg-main);
       min-height: 100%;
       scroll-behavior: smooth;
       -webkit-font-smoothing: antialiased;
@@ -112,14 +93,13 @@
     body {
       font-family: var(--font);
       color: var(--text-primary);
-      background-color: var(--neu-bg);
+      background-color: var(--bg-main);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      align-items: center;
       position: relative;
       overflow-x: hidden;
-      transition: background-color 0.4s ease, color 0.4s ease;
+      transition: background-color 0.25s ease, color 0.25s ease;
     }
 
     a {
@@ -127,95 +107,19 @@
       color: inherit;
     }
 
-    /* Ambient drifting blur blobs from portfolio */
-    .blob-scene {
-      position: fixed;
-      top: -60px;
-      left: 0;
-      right: 0;
-      bottom: -160px;
-      width: 100%;
-      height: calc(100% + 220px);
-      z-index: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
-
-    .blob {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(90px);
-      opacity: 0.50;
-      animation-timing-function: ease-in-out;
-      animation-iteration-count: infinite;
-      will-change: transform;
-    }
-
-    .blob-1 {
-      width: 480px; height: 480px;
-      background: radial-gradient(circle, #c084fc, #818cf8);
-      top: -120px; left: -100px;
-      animation: drift-1 28s infinite;
-    }
-    .blob-2 {
-      width: 420px; height: 420px;
-      background: radial-gradient(circle, #67e8f9, #06b6d4);
-      top: 30%; right: -120px;
-      animation: drift-2 34s infinite;
-    }
-    .blob-3 {
-      width: 360px; height: 360px;
-      background: radial-gradient(circle, #f9a8d4, #ec4899);
-      bottom: 80px; left: 20%;
-      animation: drift-3 38s infinite;
-    }
-    .blob-4 {
-      width: 300px; height: 300px;
-      background: radial-gradient(circle, #fde68a, #fb923c);
-      top: 55%; left: -60px;
-      animation: drift-4 32s infinite;
-    }
-
-    [data-theme="dark"] .blob-1 { background: radial-gradient(circle, #0f766e, #10b981); }
-    [data-theme="dark"] .blob-2 { background: radial-gradient(circle, #0e7490, #06b6d4); }
-    [data-theme="dark"] .blob-3 { background: radial-gradient(circle, #3730a3, #4f46e5); }
-    [data-theme="dark"] .blob-4 { background: radial-gradient(circle, #4c1d95, #8b5cf6); }
-
-    @keyframes drift-1 {
-      0%   { transform: translate(0, 0) scale(1); }
-      50%  { transform: translate(120px, 100px) scale(1.15); }
-      100% { transform: translate(0, 0) scale(1); }
-    }
-    @keyframes drift-2 {
-      0%   { transform: translate(0, 0) scale(1); }
-      50%  { transform: translate(-100px, -80px) scale(1.1); }
-      100% { transform: translate(0, 0) scale(1); }
-    }
-    @keyframes drift-3 {
-      0%   { transform: translate(0, 0) scale(1); }
-      50%  { transform: translate(80px, -120px) scale(1.15); }
-      100% { transform: translate(0, 0) scale(1); }
-    }
-    @keyframes drift-4 {
-      0%   { transform: translate(0, 0) scale(1); }
-      50%  { transform: translate(-90px, 110px) scale(1.1); }
-      100% { transform: translate(0, 0) scale(1); }
-    }
-
     /* Main Container */
     .app-container {
       width: 100%;
-      max-width: 1100px;
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 32px 20px 48px;
-      position: relative;
-      z-index: 1;
+      padding: 28px 20px 48px;
       display: flex;
       flex-direction: column;
-      gap: 32px;
+      gap: 28px;
+      flex: 1;
     }
 
-    /* Top Navigation */
+    /* Top Navigation Bar */
     .top-nav {
       display: flex;
       align-items: center;
@@ -227,21 +131,20 @@
     .brand-group {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
     }
 
     .brand-icon {
-      width: 44px;
-      height: 44px;
+      width: 40px;
+      height: 40px;
       border-radius: var(--r-sm);
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      backdrop-filter: blur(12px);
-      box-shadow: var(--neu-shadow-sm);
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-sm);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.3rem;
+      font-size: 1.15rem;
       color: var(--accent-indigo);
       flex-shrink: 0;
     }
@@ -252,22 +155,21 @@
     }
 
     .brand-heading {
-      font-size: 1.35rem;
+      font-size: 1.25rem;
       font-weight: 800;
       letter-spacing: -0.02em;
       line-height: 1.2;
-      background: linear-gradient(135deg, var(--name-grad-start) 0%, var(--accent-indigo) 60%, var(--accent-cyan) 100%);
+      background: linear-gradient(135deg, var(--text-primary) 30%, var(--accent-indigo) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
     .brand-subtitle {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: var(--text-muted);
       font-family: var(--font-mono);
-      margin-top: 2px;
-      letter-spacing: 0.02em;
+      margin-top: 1px;
     }
 
     .nav-actions {
@@ -279,13 +181,12 @@
     .badge-count {
       font-family: var(--font-mono);
       font-size: 0.72rem;
-      padding: 6px 12px;
+      padding: 5px 12px;
       border-radius: var(--r-full);
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
       color: var(--text-secondary);
-      box-shadow: var(--neu-shadow-sm);
-      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-sm);
       display: flex;
       align-items: center;
       gap: 6px;
@@ -297,53 +198,45 @@
       font-weight: 700;
     }
 
-    /* Segmented theme switch from portfolio */
+    /* Segmented Theme Switch */
     .theme-segmented-switch {
       position: relative;
       display: flex;
       align-items: center;
-      width: 68px;
-      height: 34px;
+      width: 66px;
+      height: 32px;
       padding: 3px;
-      border-radius: 9999px;
-      border: 1px solid var(--glass-border);
-      background: rgba(255, 255, 255, 0.45);
-      backdrop-filter: blur(14px);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+      border-radius: var(--r-full);
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-card);
+      box-shadow: var(--shadow-sm);
       cursor: pointer;
       user-select: none;
       outline: none;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-    }
-
-    [data-theme="dark"] .theme-segmented-switch {
-      background: rgba(26, 29, 48, 0.75);
-      border-color: rgba(255, 255, 255, 0.12);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+      transition: border-color 0.2s ease;
     }
 
     .theme-segmented-switch:hover {
-      border-color: rgba(99, 102, 241, 0.5);
-      box-shadow: 0 6px 22px rgba(99, 102, 241, 0.22);
+      border-color: var(--accent-indigo);
     }
 
     .switch-thumb {
       position: absolute;
       top: 3px;
       left: 3px;
-      width: 26px;
-      height: 26px;
+      width: 24px;
+      height: 24px;
       border-radius: 50%;
       background: #ffffff;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
-      transition: transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s ease;
       z-index: 1;
     }
 
     [data-theme="dark"] .switch-thumb {
       transform: translateX(34px);
       background: linear-gradient(135deg, #6366f1, #4f46e5);
-      box-shadow: 0 2px 10px rgba(99, 102, 241, 0.6), 0 0 12px rgba(6, 182, 212, 0.4);
+      box-shadow: 0 1px 6px rgba(99, 102, 241, 0.5);
     }
 
     .switch-option {
@@ -352,83 +245,66 @@
       align-items: center;
       justify-content: center;
       z-index: 2;
-      color: var(--text-secondary);
-      transition: color 0.3s ease;
+      color: var(--text-muted);
+      transition: color 0.2s ease;
     }
 
-    /* Hero / Search Section */
+    /* Search Section */
     .search-card {
       width: 100%;
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--r-lg);
-      box-shadow: var(--neu-shadow-out);
-      backdrop-filter: blur(14px);
-      padding: 32px 28px 24px;
-      position: relative;
-      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      padding: 30px 24px 24px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 18px;
+      gap: 16px;
       text-align: center;
-      transition: background 0.4s ease, box-shadow 0.4s ease;
-    }
-
-    .search-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--sheen-edge), transparent);
+      transition: background 0.25s ease, border-color 0.25s ease;
     }
 
     .search-title {
-      font-family: var(--font-urdu);
-      font-size: clamp(1.4rem, 3.5vw, 1.85rem);
-      font-weight: 700;
-      line-height: 2.1;
+      font-size: clamp(1.4rem, 3.2vw, 1.85rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
       color: var(--text-primary);
     }
 
     .search-subtitle {
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       color: var(--text-secondary);
-      max-width: 580px;
-      line-height: 1.6;
+      max-width: 540px;
+      line-height: 1.55;
       margin-top: -6px;
     }
 
-    /* Inset Neumorphic Search Input */
+    /* Inset Search Bar */
     .search-bar-wrap {
       width: 100%;
-      max-width: 680px;
+      max-width: 660px;
       position: relative;
-      margin-top: 6px;
+      margin-top: 4px;
     }
 
     .search-bar {
       width: 100%;
-      height: 54px;
-      padding: 0 54px 0 20px;
+      height: 52px;
+      padding: 0 46px 0 20px;
       border-radius: var(--r-full);
-      border: 1px solid var(--glass-border);
-      background: var(--neu-bg);
-      box-shadow: var(--neu-shadow-in);
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-inset);
       font-family: var(--font);
       font-size: 0.95rem;
       color: var(--text-primary);
       outline: none;
-      transition: border-color 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    [data-theme="dark"] .search-bar {
-      background: #10121e;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
     .search-bar:focus {
-      border-color: rgba(99, 102, 241, 0.6);
-      box-shadow: var(--neu-shadow-in), 0 0 0 2px rgba(99, 102, 241, 0.2);
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.18);
     }
 
     .search-icon-btn {
@@ -437,68 +313,68 @@
       top: 50%;
       transform: translateY(-50%);
       color: var(--text-muted);
-      font-size: 1.05rem;
+      font-size: 1rem;
       pointer-events: none;
     }
 
     .clear-btn {
       position: absolute;
-      left: 18px;
+      left: 16px;
       top: 50%;
       transform: translateY(-50%);
-      width: 26px;
-      height: 26px;
+      width: 24px;
+      height: 24px;
       border-radius: 50%;
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
       color: var(--text-muted);
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.75rem;
-      transition: all 0.2s ease;
+      font-size: 0.72rem;
+      transition: all 0.15s ease;
     }
 
     .clear-btn:hover {
       color: var(--text-primary);
-      transform: translateY(-50%) scale(1.1);
     }
 
-    /* Minimalist Filter Chips */
+    /* Purely Salafi Filter Chips */
     .filter-chips {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
       margin-top: 4px;
     }
 
     .filter-chip-label {
-      font-size: 0.72rem;
+      font-size: 0.75rem;
+      font-weight: 600;
       color: var(--text-muted);
-      margin-left: 4px;
+      margin-right: 4px;
     }
 
     .chip-btn {
-      padding: 5px 12px;
+      padding: 6px 13px;
       border-radius: var(--r-full);
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
+      background: var(--bg-inset);
+      border: 1px solid var(--border-subtle);
       color: var(--text-secondary);
       font-size: 0.75rem;
       font-family: var(--font);
       cursor: pointer;
-      transition: transform 0.25s var(--ease-bounce), background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-      backdrop-filter: blur(8px);
+      transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+      white-space: nowrap;
     }
 
     .chip-btn:hover {
-      transform: translateY(-2px) scale(1.04);
       color: var(--accent-indigo);
-      border-color: rgba(99, 102, 241, 0.4);
-      background: var(--glass-bg-hov);
+      border-color: var(--accent-indigo);
+      background: var(--bg-card);
+      transform: translateY(-1px);
     }
 
     /* Results Header */
@@ -524,9 +400,9 @@
       font-size: 0.72rem;
       padding: 3px 10px;
       border-radius: var(--r-full);
-      background: rgba(99, 102, 241, 0.15);
+      background: rgba(99, 102, 241, 0.12);
       color: var(--accent-indigo);
-      border: 1px solid rgba(99, 102, 241, 0.3);
+      border: 1px solid rgba(99, 102, 241, 0.25);
     }
 
     .reset-filter-btn {
@@ -538,10 +414,9 @@
       font-family: var(--font);
       padding: 4px 8px;
       border-radius: var(--r-xs);
-      transition: opacity 0.2s ease;
+      font-weight: 500;
     }
     .reset-filter-btn:hover {
-      opacity: 0.8;
       text-decoration: underline;
     }
 
@@ -551,44 +426,31 @@
       color: var(--text-muted);
     }
 
-    /* Books Grid & Glass Cards */
+    /* Books Grid & High-Performance Cards */
     .books-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 20px;
+      gap: 18px;
       width: 100%;
     }
 
     .book-card {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--r-md);
-      box-shadow: var(--glass-shadow);
-      padding: 22px;
+      box-shadow: var(--shadow-sm);
+      padding: 20px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(14px);
-      transition: transform 0.3s cubic-bezier(0.1, 0.1, 0.25, 1), box-shadow 0.3s ease, border-color 0.3s ease;
-    }
-
-    .book-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 50%;
-      background: linear-gradient(to bottom, var(--sheen-card), transparent);
-      pointer-events: none;
-      border-radius: inherit;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     }
 
     .book-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--glass-shadow-hov), 0 0 0 1px rgba(99, 102, 241, 0.25);
-      border-color: rgba(99, 102, 241, 0.35);
-      background: var(--glass-bg-hov);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--border-focus);
     }
 
     .card-top {
@@ -602,17 +464,12 @@
     .serial-tag {
       font-family: var(--font-mono);
       font-size: 0.72rem;
-      font-weight: 500;
+      font-weight: 600;
       padding: 3px 8px;
       border-radius: var(--r-xs);
-      background: var(--neu-bg);
-      border: 1px solid var(--glass-border);
+      background: var(--bg-inset);
+      border: 1px solid var(--border-subtle);
       color: var(--text-muted);
-      box-shadow: var(--neu-shadow-sm);
-    }
-
-    [data-theme="dark"] .serial-tag {
-      background: #111422;
     }
 
     .copy-icon-btn {
@@ -627,12 +484,11 @@
       align-items: center;
       justify-content: center;
       font-size: 0.8rem;
-      transition: color 0.2s ease, transform 0.2s ease;
+      transition: color 0.15s ease;
     }
 
     .copy-icon-btn:hover {
       color: var(--accent-indigo);
-      transform: scale(1.15);
     }
 
     .book-title {
@@ -642,6 +498,8 @@
       line-height: 2.1;
       color: var(--text-primary);
       margin-bottom: 14px;
+      direction: rtl;
+      text-align: right;
     }
 
     .book-meta {
@@ -650,24 +508,31 @@
       gap: 6px;
       font-size: 0.78rem;
       color: var(--text-secondary);
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     .meta-row {
       display: flex;
       align-items: baseline;
-      gap: 7px;
+      gap: 6px;
     }
 
-    .meta-row i {
+    .meta-label {
       color: var(--text-muted);
+      font-weight: 500;
       font-size: 0.72rem;
-      flex-shrink: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .meta-val {
+      font-family: var(--font-urdu);
+      direction: rtl;
     }
 
     .meta-clickable {
       cursor: pointer;
-      transition: color 0.2s ease;
+      transition: color 0.15s ease;
     }
     .meta-clickable:hover {
       color: var(--accent-indigo);
@@ -675,22 +540,16 @@
     }
 
     .card-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      padding-top: 14px;
-      border-top: 1px solid var(--glass-border);
-      margin-top: auto;
-    }
-
-    .action-row-split {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 8px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-subtle);
+      margin-top: auto;
     }
 
     .action-btn {
-      padding: 8px 12px;
+      padding: 9px 12px;
       border-radius: var(--r-sm);
       font-size: 0.75rem;
       font-weight: 600;
@@ -700,47 +559,28 @@
       gap: 6px;
       text-align: center;
       cursor: pointer;
-      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
       white-space: nowrap;
     }
 
     .action-btn-primary {
-      background: linear-gradient(135deg, var(--accent-indigo), #4f46e5);
+      background: var(--accent-indigo);
       color: #ffffff;
-      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid transparent;
     }
     .action-btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(99, 102, 241, 0.45);
+      background: #4f46e5;
     }
 
     .action-btn-secondary {
-      background: var(--neu-bg);
-      border: 1px solid var(--glass-border);
+      background: var(--bg-inset);
+      border: 1px solid var(--border-subtle);
       color: var(--text-primary);
-      box-shadow: var(--neu-shadow-sm);
     }
     .action-btn-secondary:hover {
-      transform: translateY(-2px);
-      border-color: rgba(99, 102, 241, 0.4);
+      border-color: var(--accent-indigo);
       color: var(--accent-indigo);
-    }
-
-    [data-theme="dark"] .action-btn-secondary {
-      background: #171a2b;
-    }
-
-    .action-btn-mirror {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--glass-border);
-      color: var(--text-secondary);
-      font-size: 0.72rem;
-      padding: 6px 10px;
-    }
-    .action-btn-mirror:hover {
-      color: var(--accent-cyan);
-      border-color: rgba(6, 182, 212, 0.4);
+      background: var(--bg-card);
     }
 
     /* Pagination */
@@ -749,29 +589,28 @@
       align-items: center;
       justify-content: center;
       gap: 12px;
-      margin-top: 16px;
+      margin-top: 12px;
     }
 
     .page-btn {
-      padding: 9px 18px;
+      padding: 8px 18px;
       border-radius: var(--r-full);
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
       color: var(--text-primary);
       font-size: 0.8rem;
       font-weight: 600;
       cursor: pointer;
-      box-shadow: var(--neu-shadow-sm);
+      box-shadow: var(--shadow-sm);
       display: flex;
       align-items: center;
       gap: 6px;
-      transition: transform 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+      transition: color 0.15s ease, border-color 0.15s ease;
     }
 
     .page-btn:hover:not(:disabled) {
-      transform: translateY(-2px);
       color: var(--accent-indigo);
-      border-color: rgba(99, 102, 241, 0.4);
+      border-color: var(--accent-indigo);
     }
 
     .page-btn:disabled {
@@ -782,54 +621,46 @@
     .page-indicator-pill {
       font-family: var(--font-mono);
       font-size: 0.8rem;
-      padding: 8px 16px;
+      padding: 7px 16px;
       border-radius: var(--r-full);
-      background: var(--neu-bg);
-      box-shadow: var(--neu-shadow-in);
+      background: var(--bg-inset);
       color: var(--text-secondary);
-    }
-
-    [data-theme="dark"] .page-indicator-pill {
-      background: #10121e;
     }
 
     /* Loading & Empty States */
     .state-container {
       width: 100%;
-      padding: 64px 20px;
+      padding: 60px 20px;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
     }
 
     .spinner {
-      width: 40px;
-      height: 40px;
-      border: 3px solid rgba(99, 102, 241, 0.2);
+      width: 36px;
+      height: 36px;
+      border: 3px solid var(--border-subtle);
       border-top-color: var(--accent-indigo);
       border-radius: 50%;
-      animation: spin 0.8s linear infinite;
+      animation: spin 0.7s linear infinite;
     }
 
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
 
-    /* Minimalist Footer from Shahzeb Faisal Portfolio */
+    /* Minimalist Footer */
     .page-footer {
       width: 100%;
       margin-top: auto;
-      padding: 32px 20px;
+      padding: 28px 20px;
       text-align: center;
       font-size: 0.85rem;
       color: var(--text-muted);
-      position: relative;
-      z-index: 1;
-      border-top: 1px solid var(--glass-border);
-      background: var(--glass-bg);
-      backdrop-filter: blur(10px);
+      border-top: 1px solid var(--border-subtle);
+      background: var(--bg-card);
     }
 
     .page-footer p {
@@ -843,41 +674,21 @@
     .heart {
       color: var(--accent-pink);
       display: inline-block;
-      animation: heart-pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes heart-pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.22); }
+      margin: 0 2px;
     }
 
     .portfolio-link {
       font-weight: 700;
       color: var(--text-primary);
-      position: relative;
-      transition: color 0.25s ease;
+      transition: color 0.2s ease;
       background: linear-gradient(135deg, var(--accent-indigo), var(--accent-cyan));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
-    .portfolio-link::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 100%;
-      height: 1.5px;
-      background: linear-gradient(90deg, var(--accent-indigo), var(--accent-cyan));
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 0.3s ease;
-    }
-
-    .portfolio-link:hover::after {
-      transform: scaleX(1);
-      transform-origin: left;
+    .portfolio-link:hover {
+      opacity: 0.85;
     }
 
     /* Toast Notification */
@@ -886,11 +697,11 @@
       bottom: 24px;
       left: 50%;
       transform: translateX(-50%) translateY(30px);
-      background: var(--neu-bg);
-      border: 1px solid var(--glass-border);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-lg);
       border-radius: var(--r-full);
-      padding: 10px 22px;
+      padding: 9px 20px;
       font-size: 0.82rem;
       color: var(--text-primary);
       display: flex;
@@ -899,11 +710,7 @@
       z-index: 9999;
       opacity: 0;
       pointer-events: none;
-      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    [data-theme="dark"] .toast-box {
-      background: #1c1f34;
+      transition: opacity 0.2s ease, transform 0.2s ease;
     }
 
     .toast-box.show {
@@ -913,14 +720,6 @@
   </style>
 </head>
 <body>
-
-  <!-- Ambient Animated Drifting Blobs -->
-  <div class="blob-scene" aria-hidden="true">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
-    <div class="blob blob-4"></div>
-  </div>
 
   <div class="app-container">
 
@@ -932,19 +731,19 @@
           <i class="fa-solid fa-book-open"></i>
         </div>
         <div class="brand-titles">
-          <h1 class="brand-heading">کتاب و سنت</h1>
-          <span class="brand-subtitle">Better KitaboSunnat</span>
+          <h1 class="brand-heading">Free Online Library</h1>
+          <span class="brand-subtitle">Islamic Classical & Contemporary Books</span>
         </div>
       </div>
 
       <div class="nav-actions">
         <!-- Live Book Counter Badge -->
         <div class="badge-count">
-          <span>کتب:</span>
+          <span>Books:</span>
           <strong id="statTotalBooks">9,314</strong>
         </div>
 
-        <!-- Minimalist Segmented Theme Switch -->
+        <!-- Segmented Theme Switch -->
         <button
           class="theme-segmented-switch"
           id="theme-toggle"
@@ -975,68 +774,70 @@
     <!-- Search Hero Section -->
     <section class="search-card">
       <h2 class="search-title">
-        کوئی بھی کتاب، مصنف یا کتاب نمبر تلاش کریں
+        Free Online Library
       </h2>
       <p class="search-subtitle">
-        بغیر کسی انتظار یا سست روی کے پوری لائبریری میں سرچ کریں اور ڈائریکٹ ڈاؤن لوڈ حاصل کریں۔
+        Fast, clean, and instant search across thousands of verified Islamic books with direct download access.
       </p>
 
-      <!-- Inset Neumorphic Search Bar -->
+      <!-- Inset Search Bar -->
       <div class="search-bar-wrap">
         <input 
           type="text" 
           id="searchInput" 
           class="search-bar"
-          dir="auto"
-          placeholder="کتاب کا نام، مصنف، ناشر یا کتاب نمبر لکھیں (مثلاً: صحیح بخاری، 113)..."
+          placeholder="Search by title, author, publisher, or book # (e.g. 113, صحیح بخاری)..."
           autofocus
         />
         <div class="search-icon-btn">
           <i class="fa-solid fa-magnifying-glass"></i>
         </div>
-        <button id="clearSearchBtn" class="clear-btn" style="display: none;" onclick="clearSearch()" title="ختم کریں">
+        <button id="clearSearchBtn" class="clear-btn" style="display: none;" onclick="clearSearch()" title="Clear search">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
 
-      <!-- Quick Filter Chips -->
+      <!-- Purely Salafi Filter Chips -->
       <div class="filter-chips">
-        <span class="filter-chip-label">مشہور تلاش:</span>
-        <button class="chip-btn" onclick="setSearchAuthor('ڈاکٹر اسرار احمد')">ڈاکٹر اسرار احمد</button>
-        <button class="chip-btn" onclick="setSearchAuthor('محمد ابراہیم میر سیالکوٹی')">ابراہیم میر سیالکوٹی</button>
-        <button class="chip-btn" onclick="setSearchAuthor('حافظ عبد المنان نور پوری')">عبد المنان نورپوری</button>
+        <span class="filter-chip-label">Popular Searches:</span>
+        <button class="chip-btn" onclick="setSearchAuthor('امام ابن تیمیہ')">امام ابن تیمیہ</button>
+        <button class="chip-btn" onclick="setSearchAuthor('ابن قیم الجوزیہ')">ابن قیم الجوزیہ</button>
+        <button class="chip-btn" onclick="setSearchAuthor('ناصر الدین البانی')">ناصر الدین البانی</button>
+        <button class="chip-btn" onclick="setSearchAuthor('حافظ زبیر علی زئی')">حافظ زبیر علی زئی</button>
+        <button class="chip-btn" onclick="setSearchAuthor('محمد بن صالح العثیمین')">ابن عثیمین</button>
+        <button class="chip-btn" onclick="setSearchAuthor('سید بدیع الدین شاہ راشدی')">بدیع الدین شاہ راشدی</button>
         <button class="chip-btn" onclick="setSearchQuery('صحیح بخاری')">صحیح بخاری</button>
-        <button class="chip-btn" onclick="setSearchQuery('قرآن')">قرآن</button>
+        <button class="chip-btn" onclick="setSearchQuery('کتاب التوحید')">کتاب التوحید</button>
       </div>
     </section>
 
     <!-- Results Status Bar -->
     <div class="results-bar">
       <div class="results-count">
-        <span id="resultsCount">کتابیں لوڈ ہو رہی ہیں...</span>
+        <span id="resultsCount">Loading library...</span>
         <span id="activeFilterBadge" class="active-badge" style="display: none;"></span>
         <button id="resetBtn" class="reset-filter-btn" style="display: none;" onclick="resetFilters()">
-          فلٹر ختم کریں
+          Clear filter
         </button>
       </div>
 
       <div class="page-info">
-        صفحہ <span id="currentPageNum">1</span> از <span id="totalPagesNum">1</span>
+        Page <span id="currentPageNum">1</span> of <span id="totalPagesNum">1</span>
       </div>
     </div>
 
     <!-- Loading State -->
     <div id="loadingIndicator" class="state-container">
       <div class="spinner"></div>
-      <p style="font-size: 0.85rem; color: var(--text-muted);">ڈیٹا بیس تیار ہو رہا ہے...</p>
+      <p style="font-size: 0.85rem; color: var(--text-muted);">Loading database...</p>
     </div>
 
     <!-- Empty State -->
     <div id="noResults" class="state-container" style="display: none;">
-      <i class="fa-solid fa-magnifying-glass" style="font-size: 2.5rem; color: var(--text-muted); opacity: 0.5;"></i>
-      <h3 style="font-size: 1.1rem; color: var(--text-primary); font-weight: 700;">کوئی کتاب نہیں ملی</h3>
-      <p style="font-size: 0.85rem; color: var(--text-muted); max-width: 400px;">
-        کتاب کا نام یا مصنف کا لفظ بدل کر تلاش کریں۔
+      <i class="fa-solid fa-magnifying-glass" style="font-size: 2.2rem; color: var(--text-muted); opacity: 0.4;"></i>
+      <h3 style="font-size: 1.05rem; color: var(--text-primary); font-weight: 700;">No books found</h3>
+      <p style="font-size: 0.85rem; color: var(--text-muted); max-width: 380px;">
+        Try searching with different keywords, book numbers, or author names.
       </p>
     </div>
 
@@ -1048,8 +849,8 @@
     <!-- Pagination -->
     <div id="paginationContainer" class="pagination-wrap" style="display: none;">
       <button id="prevPageBtn" class="page-btn" onclick="changePage(-1)">
-        <i class="fa-solid fa-chevron-right text-xs"></i>
-        <span>پچھلا</span>
+        <i class="fa-solid fa-arrow-left text-xs"></i>
+        <span>Previous</span>
       </button>
 
       <div class="page-indicator-pill" id="pageIndicator">
@@ -1057,28 +858,27 @@
       </div>
 
       <button id="nextPageBtn" class="page-btn" onclick="changePage(1)">
-        <span>اگلا</span>
-        <i class="fa-solid fa-chevron-left text-xs"></i>
+        <span>Next</span>
+        <i class="fa-solid fa-arrow-right text-xs"></i>
       </button>
     </div>
 
   </div>
 
-  <!-- Minimalist Clean Footer linking to portfolio at shahzebfaisal.com -->
+  <!-- Minimalist Clean Footer -->
   <footer class="page-footer">
     <p>
-      Made with <span class="heart" aria-label="love">♥</span> by 
-      <a href="https://shahzebfaisal.com" target="_blank" rel="noopener" class="portfolio-link">Shahzeb Faisal</a>
+      Made with <span class="heart" aria-label="love">♥</span> by <a href="https://shahzebfaisal.com" target="_blank" rel="noopener" class="portfolio-link">Shahzeb Faisal</a>
     </p>
   </footer>
 
   <!-- Toast Notification -->
   <div id="toastNotification" class="toast-box">
     <i class="fa-solid fa-check text-emerald-400"></i>
-    <span id="toastMsg">لنک کاپی ہو گیا!</span>
+    <span id="toastMsg">Link copied to clipboard!</span>
   </div>
 
-  <!-- JavaScript Logic -->
+  <!-- Client-side Logic (Zero GPU Overhead) -->
   <script>
     let allBooks = [];
     let filteredBooks = [];
@@ -1109,7 +909,7 @@
       if (!str) return '';
       return str
         .toLowerCase()
-        .replace(/[\u064B-\u065F\u0670]/g, '') // Harakat
+        .replace(/[\u064B-\u065F\u0670]/g, '') // Remove Harakat / Tashkeel
         .replace(/[آأإٱ]/g, 'ا')
         .replace(/ة/g, 'ہ')
         .replace(/[يىئ]/g, 'ی')
@@ -1154,13 +954,13 @@
             currentQuery = val;
             currentPage = 1;
             applyFilters();
-          }, 140);
+          }, 120);
         });
 
       } catch (err) {
         document.getElementById('loadingIndicator').innerHTML = `
           <div style="color: #ef4444; font-size: 0.9rem;">
-            ڈیٹا لوڈ کرنے میں مسئلہ پیش آیا۔ براہِ کرم صفحہ ریفریش کریں۔
+            Failed to load library database. Please refresh the page.
           </div>
         `;
         console.error('Failed to load books.json:', err);
@@ -1201,7 +1001,7 @@
       const total = filteredBooks.length;
       const totalPages = Math.ceil(total / pageSize) || 1;
 
-      document.getElementById('resultsCount').textContent = `${total.toLocaleString()} کتب دستیاب`;
+      document.getElementById('resultsCount').textContent = `Showing ${total.toLocaleString()} books`;
       document.getElementById('currentPageNum').textContent = currentPage;
       document.getElementById('totalPagesNum').textContent = totalPages;
       document.getElementById('pageIndicator').textContent = `${currentPage} / ${totalPages}`;
@@ -1209,7 +1009,7 @@
       const badge = document.getElementById('activeFilterBadge');
       const resetBtn = document.getElementById('resetBtn');
       if (currentAuthor || currentPublisher) {
-        badge.textContent = currentAuthor ? `مصنف: ${currentAuthor}` : `ناشر: ${currentPublisher}`;
+        badge.textContent = currentAuthor ? `Author: ${currentAuthor}` : `Publisher: ${currentPublisher}`;
         badge.style.display = 'inline-block';
         resetBtn.style.display = 'inline-block';
       } else {
@@ -1245,7 +1045,6 @@
 
       const bookUrl = `https://kitabosunnat.com/get-searched-book-by-number?searchword=${encodeURIComponent(book.s)}`;
       const downloadSearchUrl = `https://kitabosunnat.com/get-searched-book?searchword=${encodeURIComponent(book.t)}`;
-      const archiveUrl = `https://archive.org/search?query=${encodeURIComponent(book.t)}+kitabosunnat`;
 
       card.innerHTML = `
         <div>
@@ -1254,7 +1053,7 @@
             <button 
               onclick="copyToClipboard('${escapeAttr(bookUrl)}')"
               class="copy-icon-btn" 
-              title="لنک کاپی کریں"
+              title="Copy direct link"
             >
               <i class="fa-regular fa-copy"></i>
             </button>
@@ -1267,36 +1066,29 @@
           <div class="book-meta">
             ${book.a ? `
               <div class="meta-row">
-                <i class="fa-regular fa-user"></i>
-                <span>مصنف: <strong class="meta-clickable" onclick="setSearchAuthor('${escapeAttr(book.a)}')">${escapeHtml(book.a)}</strong></span>
+                <span class="meta-label">Author:</span>
+                <span class="meta-val"><strong class="meta-clickable" onclick="setSearchAuthor('${escapeAttr(book.a)}')">${escapeHtml(book.a)}</strong></span>
               </div>
             ` : ''}
 
             ${book.p ? `
               <div class="meta-row">
-                <i class="fa-solid fa-building-columns"></i>
-                <span>ناشر: <strong class="meta-clickable" onclick="setSearchPublisher('${escapeAttr(book.p)}')">${escapeHtml(book.p)}</strong></span>
+                <span class="meta-label">Publisher:</span>
+                <span class="meta-val"><strong class="meta-clickable" onclick="setSearchPublisher('${escapeAttr(book.p)}')">${escapeHtml(book.p)}</strong></span>
               </div>
             ` : ''}
           </div>
         </div>
 
         <div class="card-actions">
-          <div class="action-row-split">
-            <a href="${bookUrl}" target="_blank" rel="noopener" class="action-btn action-btn-primary">
-              <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 10px;"></i>
-              <span>کتاب و سنت صفحہ</span>
-            </a>
+          <a href="${bookUrl}" target="_blank" rel="noopener" class="action-btn action-btn-primary">
+            <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 10px;"></i>
+            <span>View on Kitabosunnat</span>
+          </a>
 
-            <a href="${downloadSearchUrl}" target="_blank" rel="noopener" class="action-btn action-btn-secondary">
-              <i class="fa-solid fa-download" style="font-size: 10px;"></i>
-              <span>ڈاؤن لوڈ صفحہ</span>
-            </a>
-          </div>
-
-          <a href="${archiveUrl}" target="_blank" rel="noopener" class="action-btn action-btn-mirror">
-            <i class="fa-solid fa-globe" style="font-size: 10px;"></i>
-            <span>Archive.org آئینہ (High Speed)</span>
+          <a href="${downloadSearchUrl}" target="_blank" rel="noopener" class="action-btn action-btn-secondary">
+            <i class="fa-solid fa-download" style="font-size: 10px;"></i>
+            <span>Download Page</span>
           </a>
         </div>
       `;
@@ -1310,7 +1102,7 @@
       if (newPage >= 1 && newPage <= totalPages) {
         currentPage = newPage;
         renderPage();
-        window.scrollTo({ top: 220, behavior: 'smooth' });
+        window.scrollTo({ top: 200, behavior: 'smooth' });
       }
     }
 
@@ -1319,7 +1111,7 @@
       currentPublisher = '';
       currentPage = 1;
       applyFilters();
-      window.scrollTo({ top: 220, behavior: 'smooth' });
+      window.scrollTo({ top: 200, behavior: 'smooth' });
     }
 
     function setSearchPublisher(pub) {
@@ -1327,7 +1119,7 @@
       currentAuthor = '';
       currentPage = 1;
       applyFilters();
-      window.scrollTo({ top: 220, behavior: 'smooth' });
+      window.scrollTo({ top: 200, behavior: 'smooth' });
     }
 
     function setSearchQuery(q) {
@@ -1338,7 +1130,7 @@
       currentPublisher = '';
       currentPage = 1;
       applyFilters();
-      window.scrollTo({ top: 220, behavior: 'smooth' });
+      window.scrollTo({ top: 200, behavior: 'smooth' });
     }
 
     function clearSearch() {
@@ -1358,7 +1150,7 @@
 
     function copyToClipboard(text) {
       navigator.clipboard.writeText(text).then(() => {
-        showToast('کتاب کا لنک کاپی ہو گیا!');
+        showToast('Link copied to clipboard!');
       });
     }
 
@@ -1368,7 +1160,7 @@
       toast.classList.add('show');
       setTimeout(() => {
         toast.classList.remove('show');
-      }, 2200);
+      }, 2000);
     }
 
     function escapeHtml(text) {
