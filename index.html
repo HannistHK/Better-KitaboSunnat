@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>کتاب و سنت تیز رفتار سرچ انجن | Better KitaboSunnat</title>
+  
+  <!-- Meta tags for SEO & Social -->
+  <meta name="description" content="کتاب و سنت لائبریری کا تیز ترین اور صاف ستھرا اوپن سورس سرچ انجن۔ بغیر کسی تاخیر کے 9,300 سے زائد اسلامی کتب فوری تلاش کریں اور ڈاؤن لوڈ کریں۔">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📖</text></svg>">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              600: '#059669',
+              700: '#047857',
+              800: '#065f46',
+              900: '#064e3b',
+              950: '#022c22'
+            }
+          },
+          fontFamily: {
+            urdu: ["'Noto Nastaliq Urdu'", "'Jameel Noori Nastaleeq'", "serif"],
+            sans: ["Inter", "-apple-system", "BlinkMacSystemFont", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts: Noto Nastaliq Urdu & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@500;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc;
+    }
+    .font-urdu {
+      font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', serif;
+      line-height: 2.2;
+    }
+    .urdu-title {
+      font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', serif;
+      line-height: 2.1;
+    }
+    .card-hover {
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .card-hover:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+    }
+  </style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-brand-950 via-brand-900 to-teal-900 text-white shadow-lg sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap justify-between items-center gap-4">
+      
+      <!-- Brand Logo / Title -->
+      <div class="flex items-center space-x-reverse space-x-3">
+        <div class="w-11 h-11 rounded-xl bg-brand-800/80 border border-brand-600/40 flex items-center justify-center text-brand-200 text-xl shadow-inner">
+          <i class="fa-solid fa-book-quran"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-xl sm:text-2xl font-bold tracking-tight">بہتر کتاب و سنت</h1>
+            <span class="bg-emerald-600/80 text-emerald-100 text-xs px-2 py-0.5 rounded-full border border-emerald-400/40">GitHub Pages</span>
+          </div>
+          <p class="text-xs text-brand-200/80">تیز ترین تلاش، مفت ڈاؤن لوڈ اور مکمل کیٹلاگ</p>
+        </div>
+      </div>
+
+      <!-- Live Counters & GitHub Links -->
+      <div class="flex items-center gap-3">
+        <div class="hidden sm:flex items-center gap-3 text-xs bg-brand-950/60 px-3.5 py-1.5 rounded-lg border border-brand-700/60">
+          <div><span class="text-brand-300 font-semibold" id="statTotalBooks">9,314</span> <span class="text-slate-300">کتب</span></div>
+          <div class="w-px h-3 bg-brand-700"></div>
+          <div><span class="text-brand-300 font-semibold" id="statTotalAuthors">2,897</span> <span class="text-slate-300">مصنفین</span></div>
+        </div>
+
+        <a 
+          href="https://github.com" 
+          id="githubRepoLink" 
+          target="_blank" 
+          class="bg-brand-800/80 hover:bg-brand-700 text-white text-xs px-3 py-2 rounded-lg font-medium flex items-center gap-1.5 transition border border-brand-600/50 shadow-sm"
+          title="GitHub پر اوپن سورس کوڈ دیکھیں"
+        >
+          <i class="fa-brands fa-github text-sm"></i>
+          <span>GitHub Repo</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Hero & Search Box -->
+  <section class="bg-gradient-to-b from-brand-900 to-brand-950 text-white pt-8 pb-12 px-4 shadow-inner">
+    <div class="max-w-4xl mx-auto text-center space-y-4">
+      
+      <h2 class="text-2xl sm:text-3xl font-urdu font-bold text-brand-50">
+        کوئی بھی اسلامی کتاب، مصنف یا کتاب نمبر فوراً تلاش کریں
+      </h2>
+      <p class="text-sm text-brand-200 max-w-2xl mx-auto">
+        کتاب و سنت لائبریری کا تیز ترین اور ہلکا پھلکا انٹرفیس۔ بغیر کسی لوڈنگ ٹائم کے فوری تلاش کریں اور براہِ راست ڈاؤن لوڈ کریں۔
+      </p>
+
+      <!-- Search Input Container -->
+      <div class="relative max-w-3xl mx-auto pt-2">
+        <div class="relative flex items-center bg-white rounded-2xl shadow-2xl p-2 border-2 border-brand-500/50 focus-within:border-brand-400">
+          <div class="px-3 text-slate-400 text-lg">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+          <input 
+            type="text" 
+            id="searchInput" 
+            dir="auto"
+            placeholder="کتاب کا نام، مصنف، ناشر، یا کتاب نمبر لکھیں (مثلاً: صحیح بخاری، اسرار احمد، 113)..." 
+            class="w-full text-slate-800 text-base sm:text-lg focus:outline-none px-2 py-1 placeholder-slate-400"
+            autofocus
+          />
+          <button 
+            id="clearSearchBtn" 
+            onclick="clearSearch()" 
+            class="hidden px-2.5 py-1 text-slate-400 hover:text-slate-600 transition"
+            title="ختم کریں"
+          >
+            <i class="fa-solid fa-xmark text-lg"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Filter Chips -->
+      <div class="pt-2 flex flex-wrap justify-center items-center gap-2 text-xs text-brand-100" id="popularChips">
+        <span class="text-brand-300 font-semibold">مشہور مصنفین:</span>
+        <button onclick="setSearchAuthor('ڈاکٹر اسرار احمد')" class="bg-brand-850/80 hover:bg-brand-800 px-2.5 py-1 rounded-full border border-brand-600/40 transition">ڈاکٹر اسرار احمد</button>
+        <button onclick="setSearchAuthor('محمد ابراہیم میر سیالکوٹی')" class="bg-brand-850/80 hover:bg-brand-800 px-2.5 py-1 rounded-full border border-brand-600/40 transition">ابراہیم میر سیالکوٹی</button>
+        <button onclick="setSearchAuthor('حافظ عبد المنان نور پوری')" class="bg-brand-850/80 hover:bg-brand-800 px-2.5 py-1 rounded-full border border-brand-600/40 transition">عبد المنان نورپوری</button>
+        <button onclick="setSearchAuthor('امام ابو عیسٰی محمد بن عیسیٰ ترمذی')" class="bg-brand-850/80 hover:bg-brand-800 px-2.5 py-1 rounded-full border border-brand-600/40 transition">امام ترمذی</button>
+        <button onclick="setSearchQuery('صحیح بخاری')" class="bg-brand-850/80 hover:bg-brand-800 px-2.5 py-1 rounded-full border border-brand-600/40 transition">صحیح بخاری</button>
+        <button onclick="setSearchQuery('قرآن')" class="bg-brand-850/80 hover:bg-brand-800 px-2.5 py-1 rounded-full border border-brand-600/40 transition">قرآن</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Main Content Area -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full">
+    
+    <!-- Results Header / Filter Bar -->
+    <div class="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-slate-200">
+      <div class="flex items-center gap-2 text-slate-700">
+        <span class="font-bold text-lg" id="resultsCount">کتابیں لوڈ ہو رہی ہیں...</span>
+        <span id="activeFilterBadge" class="hidden bg-emerald-100 text-emerald-800 text-xs px-2.5 py-0.5 rounded-full font-medium"></span>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button onclick="resetFilters()" id="resetBtn" class="hidden text-xs text-red-600 hover:text-red-700 font-medium px-2.5 py-1 bg-red-50 rounded-md border border-red-200">
+          <i class="fa-solid fa-filter-circle-xmark mr-1"></i> فلٹر ختم کریں
+        </button>
+        <div class="text-xs text-slate-500">
+          صفحہ <span id="currentPageNum" class="font-bold text-slate-700">1</span> از <span id="totalPagesNum">1</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Initial Loading State -->
+    <div id="loadingIndicator" class="py-20 text-center">
+      <div class="inline-block animate-spin rounded-full h-10 w-10 border-4 border-emerald-600 border-t-transparent"></div>
+      <p class="mt-3 text-slate-600 text-sm">ڈیٹا بیس لوڈ ہو رہا ہے (چند لمحے)...</p>
+    </div>
+
+    <!-- Empty State -->
+    <div id="noResults" class="hidden py-16 text-center space-y-3">
+      <div class="text-5xl text-slate-300">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+      <h3 class="text-lg font-bold text-slate-700">کوئی کتاب نہیں ملی</h3>
+      <p class="text-sm text-slate-500 max-w-md mx-auto">
+        تلاش کے الفاظ بدل کر دیکھیں، یا صرف کتاب کا ایک لفظ، مصنف کا نام یا کتاب نمبر لکھیں۔
+      </p>
+    </div>
+
+    <!-- Books Grid -->
+    <div id="booksGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-6">
+      <!-- Cards rendered here via JavaScript -->
+    </div>
+
+    <!-- Pagination -->
+    <div id="paginationContainer" class="flex justify-center items-center gap-2 pt-10 pb-6 hidden">
+      <button 
+        id="prevPageBtn" 
+        onclick="changePage(-1)" 
+        class="px-4 py-2 bg-white border border-slate-300 rounded-lg text-sm text-slate-700 font-medium hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed shadow-sm flex items-center gap-1.5 transition"
+      >
+        <i class="fa-solid fa-chevron-right text-xs"></i>
+        <span>پچھلا صفحہ</span>
+      </button>
+      <div class="px-4 py-2 text-sm text-slate-700 font-semibold" id="pageIndicator">
+        1
+      </div>
+      <button 
+        id="nextPageBtn" 
+        onclick="changePage(1)" 
+        class="px-4 py-2 bg-white border border-slate-300 rounded-lg text-sm text-slate-700 font-medium hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed shadow-sm flex items-center gap-1.5 transition"
+      >
+        <span>اگلا صفحہ</span>
+        <i class="fa-solid fa-chevron-left text-xs"></i>
+      </button>
+    </div>
+
+  </main>
+
+  <!-- Copy Toast Notification -->
+  <div id="toastNotification" class="fixed bottom-5 left-5 z-50 bg-slate-900 text-white text-xs px-4 py-2.5 rounded-lg shadow-xl flex items-center gap-2 border border-slate-700 transition-opacity duration-300 opacity-0 pointer-events-none">
+    <i class="fa-solid fa-circle-check text-emerald-400"></i>
+    <span id="toastMsg">لنک کاپی ہو گیا!</span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 text-xs py-6 border-t border-slate-800 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-3 text-center sm:text-right">
+      <div>
+        بہتر کتاب و سنت — مجلس التحقیق الاسلامی، لاہور کے مفت اسلامی ڈیٹا کا اوپن سورس سرچ انجن۔
+      </div>
+      <div class="flex items-center gap-4 text-slate-300">
+        <a href="https://kitabosunnat.com" target="_blank" class="hover:text-emerald-400 transition">KitaboSunnat.com</a>
+        <span>•</span>
+        <a href="https://archive.org" target="_blank" class="hover:text-emerald-400 transition">Internet Archive</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Client-side Logic (Zero Server Dependency!) -->
+  <script>
+    let allBooks = [];
+    let filteredBooks = [];
+    let currentQuery = '';
+    let currentAuthor = '';
+    let currentPublisher = '';
+    let currentPage = 1;
+    const pageSize = 24;
+    let debounceTimer = null;
+
+    // Urdu / Arabic Normalization Helper
+    function normalizeText(str) {
+      if (!str) return '';
+      return str
+        .toLowerCase()
+        // Remove Arabic diacritics (Harakat / Tashkeel)
+        .replace(/[\u064B-\u065F\u0670]/g, '')
+        // Normalize Alif forms (آ, أ, إ -> ا)
+        .replace(/[آأإٱ]/g, 'ا')
+        // Normalize Teh Marbuta / Heh
+        .replace(/ة/g, 'ہ')
+        // Normalize Yeh forms (ي, ى -> ی)
+        .replace(/[يىئ]/g, 'ی')
+        // Normalize Kaf (ك -> ک)
+        .replace(/ك/g, 'ک')
+        // Remove extra spaces and non-alphanumeric punctuation
+        .replace(/[،۔؛؟\-–—\.,\/#!$%\^&\*;:{}=\-_`~()]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+    }
+
+    // Load static data from data/books.json
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const res = await fetch('data/books.json');
+        const data = await res.json();
+        
+        // Pre-normalize books for blazing fast search
+        allBooks = data.books.map(b => ({
+          ...b,
+          _normTitle: normalizeText(b.t),
+          _normAuthor: normalizeText(b.a),
+          _normPublisher: normalizeText(b.p),
+          _normSerial: String(b.s).toLowerCase()
+        }));
+
+        document.getElementById('statTotalBooks').textContent = data.total.toLocaleString();
+        document.getElementById('statTotalAuthors').textContent = data.authors_count.toLocaleString();
+        
+        filteredBooks = allBooks;
+        document.getElementById('loadingIndicator').classList.add('hidden');
+        document.getElementById('paginationContainer').classList.remove('hidden');
+
+        renderPage();
+
+        // Search input listener
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', (e) => {
+          clearTimeout(debounceTimer);
+          const val = e.target.value.trim();
+          
+          const clearBtn = document.getElementById('clearSearchBtn');
+          if (val) {
+            clearBtn.classList.remove('hidden');
+          } else {
+            clearBtn.classList.add('hidden');
+          }
+
+          debounceTimer = setTimeout(() => {
+            currentQuery = val;
+            currentPage = 1;
+            applyFilters();
+          }, 150);
+        });
+
+      } catch (err) {
+        document.getElementById('loadingIndicator').innerHTML = `
+          <div class="text-red-500 font-semibold p-4">
+            <i class="fa-solid fa-triangle-exclamation text-2xl mb-2"></i><br>
+            ڈیٹا لوڈ کرنے میں مسئلہ پیش آیا۔ براہِ کرم صفحہ ریفریش کریں۔
+          </div>
+        `;
+        console.error('Failed to load books.json:', err);
+      }
+    });
+
+    function applyFilters() {
+      const qNorm = normalizeText(currentQuery);
+      const isNum = !isNaN(currentQuery) && currentQuery.length > 0;
+
+      filteredBooks = allBooks.filter(book => {
+        // Author filter
+        if (currentAuthor && book.a !== currentAuthor) {
+          return false;
+        }
+
+        // Publisher filter
+        if (currentPublisher && book.p !== currentPublisher) {
+          return false;
+        }
+
+        // Query filter
+        if (qNorm) {
+          if (isNum) {
+            if (book._normSerial.startsWith(qNorm) || book._normSerial === qNorm) {
+              return true;
+            }
+          }
+          
+          // Match all words in query
+          const words = qNorm.split(' ');
+          const title = book._normTitle;
+          const author = book._normAuthor;
+          const publisher = book._normPublisher;
+          const serial = book._normSerial;
+
+          return words.every(w => 
+            title.includes(w) || author.includes(w) || publisher.includes(w) || serial.includes(w)
+          );
+        }
+
+        return true;
+      });
+
+      renderPage();
+    }
+
+    function renderPage() {
+      const grid = document.getElementById('booksGrid');
+      const noResults = document.getElementById('noResults');
+      const total = filteredBooks.length;
+      const totalPages = Math.ceil(total / pageSize) || 1;
+
+      // Update counters
+      document.getElementById('resultsCount').textContent = `${total.toLocaleString()} کتب دستیاب`;
+      document.getElementById('currentPageNum').textContent = currentPage;
+      document.getElementById('totalPagesNum').textContent = totalPages;
+      document.getElementById('pageIndicator').textContent = `${currentPage} / ${totalPages}`;
+
+      // Update filter badge
+      const badge = document.getElementById('activeFilterBadge');
+      const resetBtn = document.getElementById('resetBtn');
+      if (currentAuthor || currentPublisher) {
+        badge.textContent = currentAuthor ? `مصنف: ${currentAuthor}` : `ناشر: ${currentPublisher}`;
+        badge.classList.remove('hidden');
+        resetBtn.classList.remove('hidden');
+      } else {
+        badge.classList.add('hidden');
+        resetBtn.classList.add('hidden');
+      }
+
+      // Pagination buttons
+      document.getElementById('prevPageBtn').disabled = currentPage <= 1;
+      document.getElementById('nextPageBtn').disabled = currentPage >= totalPages;
+
+      grid.innerHTML = '';
+
+      if (total === 0) {
+        noResults.classList.remove('hidden');
+        document.getElementById('paginationContainer').classList.add('hidden');
+        return;
+      }
+
+      noResults.classList.add('hidden');
+      document.getElementById('paginationContainer').classList.remove('hidden');
+
+      const start = (currentPage - 1) * pageSize;
+      const pageSlice = filteredBooks.slice(start, start + pageSize);
+
+      pageSlice.forEach(book => {
+        grid.appendChild(createCard(book));
+      });
+    }
+
+    function createCard(book) {
+      const card = document.createElement('div');
+      card.className = "bg-white rounded-xl border border-slate-200/90 shadow-sm p-5 flex flex-col justify-between card-hover relative overflow-hidden";
+
+      const bookUrl = `https://kitabosunnat.com/get-searched-book-by-number?searchword=${encodeURIComponent(book.s)}`;
+      const downloadSearchUrl = `https://kitabosunnat.com/get-searched-book?searchword=${encodeURIComponent(book.t)}`;
+      const archiveUrl = `https://archive.org/search?query=${encodeURIComponent(book.t)}+kitabosunnat`;
+
+      card.innerHTML = `
+        <div>
+          <!-- Serial Number Badge -->
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="inline-flex items-center gap-1 bg-slate-100 text-slate-600 text-xs font-semibold px-2.5 py-1 rounded-md border border-slate-200 font-mono">
+              <i class="fa-solid fa-hashtag text-[10px] text-slate-400"></i> ${book.s}
+            </span>
+            <button 
+              onclick="copyToClipboard('${escapeAttr(bookUrl)}')"
+              class="text-slate-400 hover:text-slate-600 text-xs p-1 rounded" 
+              title="براہِ راست لنک کاپی کریں"
+            >
+              <i class="fa-regular fa-copy"></i>
+            </button>
+          </div>
+
+          <!-- Title -->
+          <h3 class="text-lg font-bold text-slate-900 urdu-title mb-3">
+            ${escapeHtml(book.t)}
+          </h3>
+
+          <!-- Metadata -->
+          <div class="space-y-1.5 text-xs text-slate-600 mb-5">
+            ${book.a ? `
+              <div class="flex items-start gap-1.5 cursor-pointer hover:text-emerald-700 transition" onclick="setSearchAuthor('${escapeAttr(book.a)}')">
+                <i class="fa-regular fa-user text-slate-400 mt-1"></i>
+                <span><strong>مصنف:</strong> ${escapeHtml(book.a)}</span>
+              </div>
+            ` : ''}
+
+            ${book.p ? `
+              <div class="flex items-start gap-1.5 cursor-pointer hover:text-emerald-700 transition" onclick="setSearchPublisher('${escapeAttr(book.p)}')">
+                <i class="fa-solid fa-building-columns text-slate-400 mt-1"></i>
+                <span><strong>ناشر:</strong> ${escapeHtml(book.p)}</span>
+              </div>
+            ` : ''}
+          </div>
+        </div>
+
+        <!-- Action Links -->
+        <div class="pt-4 border-t border-slate-100 space-y-2 mt-auto">
+          <div class="grid grid-cols-2 gap-2 text-xs">
+            <a 
+              href="${bookUrl}" 
+              target="_blank" 
+              class="bg-emerald-800 hover:bg-emerald-900 text-white font-medium py-2 px-3 rounded-lg flex items-center justify-center gap-1.5 transition text-center shadow-sm"
+              title="کتاب و سنت ویب سائٹ پر دیکھیں"
+            >
+              <i class="fa-solid fa-arrow-up-right-from-square text-[11px]"></i>
+              <span>کتاب و سنت صفحہ</span>
+            </a>
+
+            <a 
+              href="${downloadSearchUrl}" 
+              target="_blank" 
+              class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium py-2 px-3 rounded-lg flex items-center justify-center gap-1.5 transition text-center border border-slate-200"
+              title="کتاب کا ڈاؤن لوڈ پیج"
+            >
+              <i class="fa-solid fa-download text-[11px] text-slate-500"></i>
+              <span>ڈاؤن لوڈ صفحہ</span>
+            </a>
+          </div>
+
+          <a 
+            href="${archiveUrl}" 
+            target="_blank" 
+            class="w-full bg-slate-50 hover:bg-slate-100 text-slate-600 py-1.5 px-2.5 rounded-lg flex items-center justify-center gap-1.5 transition text-center border border-slate-200/80 text-[11px]"
+            title="انٹرنیٹ آرکائیو تیز رفتار ڈاؤن لوڈ"
+          >
+            <i class="fa-solid fa-globe text-slate-400"></i>
+            <span>Archive.org آئینہ (High Speed)</span>
+          </a>
+        </div>
+      `;
+
+      return card;
+    }
+
+    function changePage(delta) {
+      const totalPages = Math.ceil(filteredBooks.length / pageSize) || 1;
+      const newPage = currentPage + delta;
+      if (newPage >= 1 && newPage <= totalPages) {
+        currentPage = newPage;
+        renderPage();
+        window.scrollTo({ top: 380, behavior: 'smooth' });
+      }
+    }
+
+    function setSearchAuthor(author) {
+      currentAuthor = author;
+      currentPublisher = '';
+      currentPage = 1;
+      applyFilters();
+      window.scrollTo({ top: 380, behavior: 'smooth' });
+    }
+
+    function setSearchPublisher(pub) {
+      currentPublisher = pub;
+      currentAuthor = '';
+      currentPage = 1;
+      applyFilters();
+      window.scrollTo({ top: 380, behavior: 'smooth' });
+    }
+
+    function setSearchQuery(q) {
+      document.getElementById('searchInput').value = q;
+      document.getElementById('clearSearchBtn').classList.remove('hidden');
+      currentQuery = q;
+      currentAuthor = '';
+      currentPublisher = '';
+      currentPage = 1;
+      applyFilters();
+      window.scrollTo({ top: 380, behavior: 'smooth' });
+    }
+
+    function clearSearch() {
+      document.getElementById('searchInput').value = '';
+      document.getElementById('clearSearchBtn').classList.add('hidden');
+      currentQuery = '';
+      currentPage = 1;
+      applyFilters();
+    }
+
+    function resetFilters() {
+      currentAuthor = '';
+      currentPublisher = '';
+      currentPage = 1;
+      applyFilters();
+    }
+
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('کتاب کا لنک کاپی ہو گیا!');
+      });
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toastNotification');
+      document.getElementById('toastMsg').textContent = msg;
+      toast.classList.remove('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'pointer-events-none');
+      }, 2500);
+    }
+
+    function escapeHtml(text) {
+      if (!text) return '';
+      return text.replace(/[&<>"']/g, function(m) {
+        return {
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#039;'
+        }[m];
+      });
+    }
+
+    function escapeAttr(text) {
+      if (!text) return '';
+      return text.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+    }
+  </script>
+</body>
+</html>

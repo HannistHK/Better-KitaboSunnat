@@ -1,149 +1,114 @@
 # 📚 Better KitaboSunnat (بہتر کتاب و سنت)
 
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![Flask](https://img.shields.io/badge/framework-Flask-green.svg)](https://flask.palletsprojects.com/)
-[![SQLite FTS5](https://img.shields.io/badge/search-SQLite%20FTS5-orange.svg)](https://www.sqlite.org/fts5.html)
+[![GitHub Pages](https://img.shields.io/badge/Hosted%20on-GitHub%20Pages-blue?logo=github)](https://pages.github.com/)
+[![Search Engine](https://img.shields.io/badge/Search-Zero--Latency%20Client--Side-brightgreen)](index.html)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Catalog Sync](https://github.com/your-username/Better-KitaboSunnat/actions/workflows/sync-catalog.yml/badge.svg)](https://github.com/your-username/Better-KitaboSunnat/actions/workflows/sync-catalog.yml)
+[![Catalog Sync](https://img.shields.io/badge/Catalog%20Sync-Automated%20Weekly-orange)](.github/workflows/sync-catalog.yml)
 
-A high-performance, modern, open-source web interface and search engine for **[KitaboSunnat.com](https://kitabosunnat.com/)** (کتاب و سنت لائبریری / محدث میڈیا).
+A high-performance, modern, open-source search engine and library interface for **[KitaboSunnat.com](https://kitabosunnat.com/)** (کتاب و سنت لائبریری / محدث میڈیا), engineered to run **100% free on GitHub Pages** with zero server costs or backend infrastructure.
 
-KitaboSunnat hosts the world's largest digital repository of free Islamic books in Urdu and Arabic (over **9,300+ titles**). However, its online search frequently hangs, times out, or fails due to unindexed database queries.
+KitaboSunnat hosts over **9,300+ free Islamic books**, but its web search often crashes or times out. **Better KitaboSunnat** solves this by loading an indexed catalog directly into the browser, enabling **instant search (< 5ms)**, one-click redirects to official download pages, and automated weekly catalog updates.
 
-**Better KitaboSunnat** indexes the entire library locally into an **SQLite Full-Text Search (FTS5)** engine, delivering **sub-millisecond search (< 5ms)**, direct one-click download redirects, and automated catalog syncing.
+---
+
+## 🌟 Live Demo on GitHub Pages
+
+Once deployed, your website will be accessible globally via:
+```
+https://<YOUR-GITHUB-USERNAME>.github.io/Better-KitaboSunnat/
+```
 
 ---
 
 ## ✨ Features
 
-- ⚡ **Zero-Lag Search (< 5ms):** Instant full-text search across 9,300+ books with prefix matching in Urdu, Arabic, English/Roman, or Book ID.
-- 🎨 **Modern Urdu UI:** Clean, responsive Right-to-Left (RTL) interface with Google Noto Nastaliq typography and Tailwind CSS.
-- 🎯 **Multi-Field Filtering:** Search and filter by Book Title (`نامِ کتاب`), Author (`مصنف`), Publisher (`ناشر`), or Serial Number (`#113`).
-- 🔗 **Smart One-Click Redirects:**
-  - **کتاب و سنت پر دیکھیں:** Opens the exact book page on KitaboSunnat directly without navigating their slow search.
+- 🌐 **100% Free GitHub Pages Hosting:** Zero backend servers, zero databases to manage, zero hosting bills.
+- ⚡ **Zero-Lag Search (< 5ms):** Fast client-side search across 9,300+ books with Arabic/Urdu character normalization (ignores Tashkeel/diacritics, unifies Alif/Yeh/Heh).
+- 🎨 **Modern Urdu Interface:** Clean Right-to-Left (RTL) layout with Google Noto Nastaliq Urdu typography and Tailwind CSS.
+- 🎯 **Multi-Field Filtering:** Search by Book Title (`نامِ کتاب`), Author (`مصنف`), Publisher (`ناشر`), or Book ID (`#113`).
+- 🔗 **Smart One-Click Actions:**
+  - **کتاب و سنت صفحہ:** Opens the exact book on KitaboSunnat directly, bypassing their broken search.
   - **ڈاؤن لوڈ صفحہ:** Instant redirect to KitaboSunnat's official download page.
-  - **Archive.org آئینہ:** Direct access to Internet Archive high-speed download mirrors.
-- 📥 **Local Hard Drive Downloader:** Download books locally into `library_pdfs/` on-demand or in bulk. Once downloaded, an **"آف لائن پڑھیں"** button lets you read directly offline!
-- 🔄 **Automated Weekly Sync:** Built-in GitHub Actions workflow and CLI script that automatically fetches new book releases from KitaboSunnat and updates the database.
+  - **Archive.org آئینہ:** Direct high-speed download mirrors on Internet Archive.
+  - **لنک کاپی کریں:** One-click copy book URL to clipboard.
+- 🔄 **Self-Updating Catalog:** Includes a GitHub Action workflow that checks KitaboSunnat every week, adds any newly uploaded books to `data/books.json`, and automatically redeploys GitHub Pages!
 
 ---
 
-## 🚀 Quick Start (Local Setup)
+## 🚀 How to Deploy to GitHub Pages (2 Minutes)
 
-### 1. Clone the repository
+### Step 1: Create a GitHub Repository
+1. Go to [github.com/new](https://github.com/new) and create a repository named **`Better-KitaboSunnat`**.
+2. Leave it empty (do NOT check "Add a README file").
+
+### Step 2: Push this Repository
+From this directory (`Better-KitaboSunnat`):
 ```bash
-git clone https://github.com/your-username/Better-KitaboSunnat.git
-cd Better-KitaboSunnat
+git remote add origin https://github.com/<YOUR-USERNAME>/Better-KitaboSunnat.git
+git push -u origin main
 ```
 
-### 2. Install dependencies
-```bash
-pip install -r requirements.txt
-```
-
-### 3. Run the application
-```bash
-python app.py
-```
-
-Open your browser at:
-```
-http://127.0.0.1:5000
-```
+### Step 3: Enable GitHub Pages
+1. On GitHub, go to your repository **Settings** ➔ **Pages** (in the left sidebar).
+2. Under **Build and deployment** ➔ **Source**:
+   * Select **GitHub Actions** (the included workflow will build and publish automatically!).
+   * *(Alternatively: select "Deploy from a branch" ➔ `main` ➔ `/ (root)`).*
+3. Within 1 minute, your site will be live at:
+   ```
+   https://<YOUR-USERNAME>.github.io/Better-KitaboSunnat/
+   ```
 
 ---
 
-## 🐳 Running with Docker
+## 🔄 How the Self-Updating Catalog Works
 
-Run with a single command:
-```bash
-docker-compose up -d
-```
-The application will be live at `http://localhost:5000`.
+KitaboSunnat updates their catalog export at `https://kitabosunnat.com/export_books_excel`.
 
----
-
-## 🔄 How Catalog Updates Work
-
-When new books are uploaded to KitaboSunnat, you have **three easy ways** to update your website:
-
-### Option A: From the Web UI (One-Click)
-Click the **"کیٹلاگ اپ ڈیٹ" (Sync Catalog)** button in the top navigation bar. It contacts KitaboSunnat's catalog endpoint in the background and inserts any new books into your SQLite database without restarting the server.
-
-### Option B: Automatic GitHub Actions (Hands-Free)
-This repository includes a scheduled GitHub Action ([`.github/workflows/sync-catalog.yml`](.github/workflows/sync-catalog.yml)) that runs **every Sunday at 02:00 UTC**. It:
-1. Downloads the latest catalog export from `https://kitabosunnat.com/export_books_excel`.
-2. Adds any newly added books into `kitabosunnat.db`.
-3. Commits and pushes the updated database directly back to your repository!
-
-### Option C: Via Command Line
-Run the sync script directly:
-```bash
-python sync_catalog.py
-```
+You don't need to manually update anything:
+* **Automated Weekly Sync ([`.github/workflows/sync-catalog.yml`](.github/workflows/sync-catalog.yml)):**
+  Every Sunday at 02:00 UTC, a GitHub Action runs automatically. It downloads the newest catalog from KitaboSunnat, runs `sync_catalog.py` and `build_json.py`, commits any new books to `data/books.json`, and triggers a fresh deployment of your GitHub Pages site!
+* **Manual Sync:**
+  You can also trigger it anytime from your repository's **Actions** tab by clicking **Run workflow**.
 
 ---
 
-## 💽 Building Your Own Offline Hard Drive
+## 💻 Optional: Running Locally
 
-If you want to build a personal offline library of PDFs:
+If you want to run or test the site locally on your computer:
 
 ```bash
-# Download books by a specific author (e.g. Dr. Israr Ahmed)
-python bulk_downloader.py --author "ڈاکٹر اسرار احمد" --limit 25
-
-# Download books matching a query (e.g. Sahih Bukhari)
-python bulk_downloader.py --query "صحیح بخاری" --limit 10
-
-# Download latest 50 uploaded books
-python bulk_downloader.py --limit 50
+# Using Python's built-in web server:
+python -m http.server 8000
 ```
-
-Downloaded PDFs are stored in `library_pdfs/`, and the web interface automatically detects them and displays an offline reading button.
-
----
-
-## ☁️ 1-Click Cloud Deployment
-
-### Deploy to Render / Railway / Fly.io
-1. Push this repository to your GitHub account.
-2. In [Render](https://render.com) or [Railway](https://railway.app), create a new **Web Service** connected to your repository.
-3. Build command: `pip install -r requirements.txt`
-4. Start command: `gunicorn --bind 0.0.0.0:$PORT app:app`
+Then visit `http://localhost:8000` in your browser.
 
 ---
 
-## 📁 Project Structure
+## 📁 Repository Structure
 
 ```
 Better-KitaboSunnat/
+├── index.html                 # Main static web application (GitHub Pages root)
+├── data/
+│   └── books.json             # Compact catalog of 9,314 books (~280 KB gzipped)
 ├── .github/
 │   └── workflows/
-│       └── sync-catalog.yml   # Automatic weekly GitHub Action sync
-├── templates/
-│   └── index.html            # Clean, responsive RTL Urdu web interface
-├── library_pdfs/
-│   └── .gitkeep              # Folder for local PDF storage
-├── app.py                    # Flask web application & REST API
-├── build_database.py         # SQLite & FTS5 database builder
-├── sync_catalog.py           # Catalog synchronization utility
-├── download_manager.py       # In-app background PDF downloader
-├── bulk_downloader.py        # Command-line batch PDF downloader
-├── test_app.py               # Test suite
-├── books.xls                 # Official catalog snapshot (9,314 books)
-├── kitabosunnat.db           # Pre-compiled SQLite FTS5 database
-├── requirements.txt          # Python dependencies
-├── Dockerfile                # Production Docker container
-├── docker-compose.yml        # Docker compose specification
-├── .gitignore                # Git ignore rules
-├── LICENSE                   # MIT License
-└── README.md                 # Project documentation
+│       ├── deploy-pages.yml   # Automatic deployment to GitHub Pages
+│       └── sync-catalog.yml   # Weekly auto-update of new books from KitaboSunnat
+├── build_json.py              # Compiles books into data/books.json
+├── sync_catalog.py            # Fetches latest catalog from KitaboSunnat
+├── build_database.py          # SQLite FTS5 database builder
+├── books.xls                  # Official catalog spreadsheet
+├── kitabosunnat.db            # SQLite database
+├── requirements.txt           # Python tools dependencies
+├── LICENSE                    # MIT License
+└── README.md                  # Project documentation
 ```
 
 ---
 
 ## ⚖️ Disclaimer & License
 
-This project is an open-source community tool designed to make Islamic literature accessible to researchers and students. All books, scans, and intellectual properties belong to their respective authors and publishers, and are hosted by **KitaboSunnat.com (مجلس التحقیق الاسلامی، لاہور)**.
+This is an open-source research and preservation tool. All scanned texts and contents are distributed freely by **KitaboSunnat.com (مجلس التحقیق الاسلامی، لاہور)**.
 
-Distributed under the [MIT License](LICENSE).
+Licensed under the [MIT License](LICENSE).
