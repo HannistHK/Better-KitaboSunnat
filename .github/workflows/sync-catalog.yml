@@ -1,0 +1,33 @@
+name: Sync Catalog with KitaboSunnat
+
+on:
+  schedule:
+    # Run every Sunday at 02:00 UTC
+    - cron: '0 2 * * 0'
+  workflow_dispatch: # Allows manual trigger from GitHub Actions UI
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run catalog synchronization
+        run: python sync_catalog.py
+
+      - name: Commit and push if catalog updated
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action [Catalog Sync]"
+          git add books.xls kitabosunnat.db
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update library catalog [skip ci]" && git push)

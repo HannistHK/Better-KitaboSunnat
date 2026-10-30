@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: better-kitabosunnat
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./kitabosunnat.db:/app/kitabosunnat.db
+      - ./library_pdfs:/app/library_pdfs
+    environment:
+      - FLASK_ENV=production
