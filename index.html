@@ -1046,18 +1046,20 @@
       // Direct Book Page (bypasses slow search engine completely)
       const directBookUrl = book.u || `https://kitabosunnat.com/get-searched-book-by-number?searchword=${encodeURIComponent(book.s)}`;
       const hasDirectPdf = !!book.d;
-      const downloadLink = hasDirectPdf ? book.d : directBookUrl;
-      const downloadText = hasDirectPdf ? 'Direct PDF' : 'Download PDF';
-      const downloadIcon = hasDirectPdf ? 'fa-solid fa-file-pdf' : 'fa-solid fa-download';
+      const downloadLink = hasDirectPdf ? book.d : `https://archive.org/search?query=${encodeURIComponent(book.t)}`;
+      const downloadText = hasDirectPdf ? 'Direct PDF' : 'Search PDF';
+      const downloadIcon = hasDirectPdf ? 'fa-solid fa-file-pdf' : 'fa-solid fa-magnifying-glass';
+      const downloadTitle = hasDirectPdf ? 'Directly download book PDF' : 'Search Internet Archive mirror for this book';
+      const copyLink = hasDirectPdf ? book.d : directBookUrl;
 
       card.innerHTML = `
         <div>
           <div class="card-top">
             <span class="serial-tag">#${book.s}</span>
             <button 
-              onclick="copyToClipboard('${escapeAttr(downloadLink)}')"
+              onclick="copyToClipboard('${escapeAttr(copyLink)}')"
               class="copy-icon-btn" 
-              title="Copy link"
+              title="${hasDirectPdf ? 'Copy direct PDF download link' : 'Copy book page link'}"
             >
               <i class="fa-regular fa-copy"></i>
             </button>
@@ -1085,12 +1087,12 @@
         </div>
 
         <div class="card-actions">
-          <a href="${directBookUrl}" target="_blank" rel="noopener" class="action-btn action-btn-secondary" title="View official book page">
+          <a href="${directBookUrl}" target="_blank" rel="noopener" class="action-btn action-btn-secondary" title="View official book page on KitaboSunnat">
             <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 10px;"></i>
             <span>Book Page</span>
           </a>
 
-          <a href="${downloadLink}" target="_blank" rel="noopener" class="action-btn action-btn-primary" title="Download book PDF" ${hasDirectPdf ? 'download' : ''}>
+          <a href="${downloadLink}" target="_blank" rel="noopener" class="action-btn action-btn-primary" title="${downloadTitle}" ${hasDirectPdf ? 'download' : ''}>
             <i class="${downloadIcon}" style="font-size: 10px;"></i>
             <span>${downloadText}</span>
           </a>
