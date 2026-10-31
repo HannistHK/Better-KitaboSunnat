@@ -468,12 +468,24 @@
       border-color: var(--border-focus);
     }
 
+    .card-body-wrap {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
     .card-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 8px;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
+    }
+
+    .card-top-right {
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .serial-tag {
@@ -485,6 +497,28 @@
       background: var(--bg-inset);
       border: 1px solid var(--border-subtle);
       color: var(--text-muted);
+      letter-spacing: 0.02em;
+    }
+
+    .pdf-badge {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: var(--r-full);
+      background: rgba(99, 102, 241, 0.12);
+      color: var(--accent-indigo);
+      border: 1px solid rgba(99, 102, 241, 0.28);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      letter-spacing: 0.04em;
+    }
+
+    [data-theme="dark"] .pdf-badge {
+      background: rgba(99, 102, 241, 0.22);
+      color: #a5b4fc;
+      border-color: rgba(99, 102, 241, 0.4);
     }
 
     .copy-icon-btn {
@@ -499,50 +533,70 @@
       align-items: center;
       justify-content: center;
       font-size: 0.8rem;
-      transition: color 0.15s ease;
+      transition: color 0.15s ease, background 0.15s ease;
     }
 
     .copy-icon-btn:hover {
       color: var(--accent-indigo);
+      background: var(--bg-inset);
+    }
+
+    .book-content {
+      direction: rtl;
+      text-align: right;
+      margin-bottom: 16px;
     }
 
     .book-title {
       font-family: var(--font-urdu);
-      font-size: 1.15rem;
+      font-size: 1.25rem;
       font-weight: 700;
-      line-height: 2.1;
+      line-height: 2.3;
       color: var(--text-primary);
-      margin-bottom: 14px;
+      margin: 4px 0 10px;
       direction: rtl;
       text-align: right;
+      word-break: break-word;
+      padding: 2px 0;
     }
 
     .book-meta {
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      font-size: 0.78rem;
-      color: var(--text-secondary);
-      margin-bottom: 18px;
+      gap: 8px;
+      direction: rtl;
+      text-align: right;
     }
 
-    .meta-row {
+    .meta-item {
       display: flex;
-      align-items: baseline;
-      gap: 6px;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-urdu);
+      direction: rtl;
+      text-align: right;
+      line-height: 1.7;
     }
 
-    .meta-label {
-      color: var(--text-muted);
-      font-weight: 500;
+    .meta-role-tag {
+      font-family: var(--font-urdu);
       font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: var(--r-xs);
+      background: var(--bg-inset);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      flex-shrink: 0;
+      line-height: 1.5;
     }
 
     .meta-val {
       font-family: var(--font-urdu);
+      font-size: 0.88rem;
+      color: var(--text-secondary);
       direction: rtl;
+      text-align: right;
     }
 
     .meta-clickable {
@@ -568,18 +622,24 @@
     }
 
     .action-btn {
-      padding: 9px 12px;
+      padding: 10px 12px;
+      min-height: 44px;
       border-radius: var(--r-sm);
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       font-weight: 600;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
+      gap: 7px;
       text-align: center;
       cursor: pointer;
-      transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+      transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
       white-space: nowrap;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .action-btn:active {
+      transform: scale(0.98);
     }
 
     .action-btn-primary {
@@ -743,11 +803,11 @@
     @media (max-width: 640px) {
       /* App container: tighter, cleaner margins on small screens */
       .app-container {
-        padding: 14px 12px 32px;
-        gap: 14px;
+        padding: 14px 12px 36px;
+        gap: 16px;
       }
 
-      /* Top Navigation: compact & balanced */
+      /* Top Navigation: zero collision guarantee */
       .top-nav {
         gap: 8px;
       }
@@ -755,6 +815,7 @@
       .brand-group {
         gap: 10px;
         min-width: 0;
+        flex: 1;
       }
 
       .brand-icon {
@@ -762,20 +823,31 @@
         height: 36px;
         font-size: 1rem;
         border-radius: var(--r-xs);
+        flex-shrink: 0;
+      }
+
+      .brand-titles {
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
       }
 
       .brand-heading {
-        font-size: 1.05rem;
+        font-size: 1.12rem;
+        font-weight: 800;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        line-height: 1.2;
       }
 
+      /* Hide redundant subtitle and duplicate count badge on mobile to eliminate overlap */
       .brand-subtitle {
-        font-size: 0.64rem;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        display: none !important;
+      }
+
+      .badge-count {
+        display: none !important;
       }
 
       .nav-actions {
@@ -783,23 +855,27 @@
         flex-shrink: 0;
       }
 
-      .badge-count {
-        padding: 4px 8px;
-        font-size: 0.68rem;
+      .theme-segmented-switch {
+        width: 58px;
+        height: 30px;
+        padding: 3px;
+        flex-shrink: 0;
       }
 
-      .badge-count span {
-        display: none;
+      .switch-thumb {
+        width: 22px;
+        height: 22px;
+        top: 3px;
+        left: 3px;
       }
 
-      .badge-count::before {
-        content: '📚 ';
-        font-size: 0.7rem;
+      [data-theme="dark"] .switch-thumb {
+        transform: translateX(28px);
       }
 
-      /* Search Card */
+      /* Search Hero Card */
       .search-card {
-        padding: 18px 14px 14px;
+        padding: 18px 14px 16px;
         gap: 12px;
         border-radius: var(--r-md);
       }
@@ -816,39 +892,40 @@
         padding: 0 4px;
       }
 
-      /* Input: 16px font-size prevents iOS Safari auto-zoom on focus */
       .search-bar-wrap {
         margin-top: 2px;
       }
 
+      /* 16px prevents iOS Safari auto-zoom on focus; padding prevents placeholder collision */
       .search-bar {
-        height: 46px;
+        height: 48px;
         font-size: 16px;
-        padding: 0 40px 0 36px;
+        padding: 0 42px 0 38px;
       }
 
       .search-icon-btn {
         right: 14px;
-        font-size: 0.9rem;
+        font-size: 0.95rem;
       }
 
       .clear-btn {
         left: 10px;
-        width: 22px;
-        height: 22px;
-        font-size: 0.65rem;
+        width: 24px;
+        height: 24px;
+        font-size: 0.7rem;
       }
 
-      /* Filter Chips: Sleek swipeable horizontal pill tray */
+      /* Filter Chips: Sleek swipeable horizontal pill tray without clipped edges */
       .filter-chips {
+        display: flex;
         flex-wrap: nowrap;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         justify-content: flex-start;
-        width: calc(100% + 12px);
-        margin: 2px -6px 0;
-        padding: 4px 6px 8px;
-        gap: 6px;
+        width: 100%;
+        margin: 4px 0 0;
+        padding: 4px 2px 8px;
+        gap: 8px;
         scrollbar-width: none;
       }
 
@@ -857,21 +934,22 @@
       }
 
       .filter-chip-label {
-        display: none;
+        display: none !important;
       }
 
       .chip-btn {
         flex-shrink: 0;
-        font-size: 0.78rem;
-        padding: 6px 12px;
+        font-size: 0.8rem;
+        font-family: var(--font-urdu);
+        padding: 6px 14px;
         white-space: nowrap;
+        min-height: 36px;
       }
 
       /* Results bar */
       .results-bar {
         padding: 0 4px;
         font-size: 0.76rem;
-        gap: 8px;
       }
 
       .results-count {
@@ -895,12 +973,12 @@
       /* Books Grid: Single Column with clean, touch-friendly proportions */
       .books-grid {
         grid-template-columns: 1fr;
-        gap: 12px;
+        gap: 14px;
       }
 
       .book-card {
         padding: 16px 14px 14px;
-        border-radius: var(--r-sm);
+        border-radius: var(--r-md);
       }
 
       .card-top {
@@ -918,45 +996,56 @@
         font-size: 0.85rem;
       }
 
+      .book-content {
+        margin-bottom: 14px;
+      }
+
       .book-title {
-        font-size: 1.05rem;
-        line-height: 2.0;
-        margin-bottom: 8px;
+        font-size: 1.15rem;
+        line-height: 2.3;
+        margin: 4px 0 8px;
       }
 
       .book-meta {
-        font-size: 0.74rem;
-        gap: 4px;
-        margin-bottom: 12px;
+        gap: 6px;
       }
 
-      .meta-clickable {
-        padding: 1px 4px;
-        border-radius: 4px;
-        background: var(--bg-inset);
+      .meta-item {
+        font-size: 0.84rem;
+        gap: 6px;
+        line-height: 1.7;
+      }
+
+      .meta-role-tag {
+        font-size: 0.68rem;
+        padding: 1px 6px;
+      }
+
+      .meta-val {
+        font-size: 0.84rem;
       }
 
       .card-actions {
-        padding-top: 10px;
+        padding-top: 12px;
         gap: 8px;
       }
 
       .action-btn {
         padding: 10px 8px;
-        min-height: 42px;
-        font-size: 0.78rem;
+        min-height: 44px;
+        font-size: 0.8rem;
       }
 
       /* Pagination */
       .pagination-wrap {
         gap: 8px;
-        margin-top: 8px;
+        margin-top: 12px;
       }
 
       .page-btn {
-        padding: 8px 14px;
-        font-size: 0.78rem;
-        min-height: 42px;
+        padding: 8px 16px;
+        font-size: 0.8rem;
+        min-height: 44px;
       }
 
       .page-indicator-pill {
@@ -966,7 +1055,7 @@
 
       /* Footer */
       .page-footer {
-        padding: 20px 14px;
+        padding: 24px 14px;
         font-size: 0.78rem;
       }
     }
@@ -1051,7 +1140,7 @@
           type="text" 
           id="searchInput" 
           class="search-bar"
-          placeholder="Search by title, author, or book # (e.g. 113, صحیح بخاری)..."
+          placeholder="Search title, author, or # (e.g. صحیح بخاری)..."
           autofocus
         />
         <div class="search-icon-btn">
@@ -1314,48 +1403,58 @@
       const copyLink = hasDirectPdf ? book.d : directBookUrl;
 
       card.innerHTML = `
-        <div>
+        <div class="card-body-wrap">
           <div class="card-top">
             <span class="serial-tag">#${book.s}</span>
-            <button 
-              onclick="copyToClipboard('${escapeAttr(copyLink)}')"
-              class="copy-icon-btn" 
-              title="${hasDirectPdf ? 'Copy direct PDF download link' : 'Copy book page link'}"
-            >
-              <i class="fa-regular fa-copy"></i>
-            </button>
+            <div class="card-top-right">
+              ${hasDirectPdf ? `
+                <span class="pdf-badge" title="Direct PDF download available">
+                  <i class="fa-solid fa-bolt"></i> PDF
+                </span>
+              ` : ''}
+              <button 
+                onclick="copyToClipboard('${escapeAttr(copyLink)}')"
+                class="copy-icon-btn" 
+                title="${hasDirectPdf ? 'Copy direct PDF download link' : 'Copy book page link'}"
+                aria-label="Copy link"
+              >
+                <i class="fa-regular fa-copy"></i>
+              </button>
+            </div>
           </div>
 
-          <h3 class="book-title">
-            ${escapeHtml(book.t)}
-          </h3>
+          <div class="book-content" dir="rtl">
+            <h3 class="book-title" title="${escapeAttr(book.t)}">
+              ${escapeHtml(book.t)}
+            </h3>
 
-          <div class="book-meta">
-            ${book.a ? `
-              <div class="meta-row">
-                <span class="meta-label">Author:</span>
-                <span class="meta-val"><strong class="meta-clickable" onclick="setSearchAuthor('${escapeAttr(book.a)}')">${escapeHtml(book.a)}</strong></span>
-              </div>
-            ` : ''}
+            <div class="book-meta">
+              ${book.a ? `
+                <div class="meta-item">
+                  <span class="meta-role-tag">مصنف</span>
+                  <span class="meta-val meta-clickable" onclick="setSearchAuthor('${escapeAttr(book.a)}')" title="Search books by this author">${escapeHtml(book.a)}</span>
+                </div>
+              ` : ''}
 
-            ${book.p ? `
-              <div class="meta-row">
-                <span class="meta-label">Publisher:</span>
-                <span class="meta-val"><strong class="meta-clickable" onclick="setSearchPublisher('${escapeAttr(book.p)}')">${escapeHtml(book.p)}</strong></span>
-              </div>
-            ` : ''}
+              ${book.p ? `
+                <div class="meta-item">
+                  <span class="meta-role-tag">ناشر</span>
+                  <span class="meta-val meta-clickable" onclick="setSearchPublisher('${escapeAttr(book.p)}')" title="Search books by this publisher">${escapeHtml(book.p)}</span>
+                </div>
+              ` : ''}
+            </div>
           </div>
         </div>
 
         <div class="card-actions">
           <a href="${directBookUrl}" target="_blank" rel="noopener" class="action-btn action-btn-secondary ${!hasDirectPdf ? 'action-btn-single' : ''}" title="View official book page on KitaboSunnat">
-            <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 10px;"></i>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
             <span>Book Page</span>
           </a>
 
           ${hasDirectPdf ? `
             <a href="${book.d}" target="_blank" rel="noopener" class="action-btn action-btn-primary" title="Directly download book PDF" download>
-              <i class="fa-solid fa-file-pdf" style="font-size: 10px;"></i>
+              <i class="fa-solid fa-file-pdf"></i>
               <span>Direct PDF</span>
             </a>
           ` : ''}
